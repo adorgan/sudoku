@@ -1,2 +1,3 @@
 venv/
 .vscode/
+sudoku/__pycache__/

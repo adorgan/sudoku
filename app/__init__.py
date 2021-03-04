@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from algorithms import validateSolution
+from app import algorithms
 app = Flask(__name__)
 
 
@@ -26,7 +26,7 @@ def verify():
             row.append(int(vals[i]))
     grid.append(row)
 
-    if validateSolution(grid):
+    if algorithms.validateSolution(grid):
         return 'Correct!'
     else:
         return 'Sorry, Try Again.'

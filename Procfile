@@ -1,1 +1,1 @@
-web: gunicorn app:sudoku
+web: gunicorn app:app

@@ -49,8 +49,8 @@ def solve():
         else:
             row.append(int(vals[i]))
     grid.append(row)
-    solved = algorithms.getSolvedBoard(grid)
-    return json.dumps(solved)
+    algorithms.solveBoard(grid)
+    return json.dumps(grid)
 
 
 if __name__ == "__main__":

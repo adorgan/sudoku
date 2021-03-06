@@ -53,5 +53,38 @@ $("#form").submit(function (e) {
   });
 });
 
+$("#solve").click(function (e) {
+  e.preventDefault(); // avoid to execute the actual submit of the form.
 
-console.log(grid)
+  var board = [
+    0, 7, 0, 9, 0, 2, 3, 0, 8,
+    0, 0, 0, 0, 6, 0, 0, 0, 0,
+    0, 0, 0, 0, 5, 7, 1, 0, 6,
+    0, 0, 0, 0, 0, 0, 0, 0, 7,
+    7, 6, 8, 4, 0, 0, 0, 0, 2,
+    0, 0, 0, 0, 0, 9, 0, 3, 0,
+    1, 0, 0, 0, 7, 3, 2, 0, 0,
+    0, 8, 0, 0, 0, 1, 0, 4, 0,
+    0, 0, 0, 0, 0, 0, 0, 6, 0
+  ];
+
+  $.ajax({
+    type: "POST",
+    url: '/solve',
+    data: JSON.stringify(board),
+    success: function (data) {
+      arr = JSON.parse(data)
+      setPuzzle(arr);
+    },
+  });
+});
+
+
+function setPuzzle(board){
+    for (i = 0; i < 9; i++) {
+      for (j = 0; j < 9; j++) {
+        grid[i][j].innerText = board[i][j]
+        
+      }
+    }
+}

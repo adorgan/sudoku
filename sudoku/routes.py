@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, json
-from app.helpers import algorithms
-app = Flask(__name__)
+from sudoku.__init__ import app
+from flask import render_template, request, json
+from sudoku.helpers import algorithms
 
 
 @app.route('/')
@@ -49,7 +49,3 @@ def solve():
     grid.append(row)
     solved = algorithms.getSolvedBoard(grid)
     return json.dumps(solved)
-
-
-if __name__ == "__main__":
-    app.run(host='0.0.0.0')

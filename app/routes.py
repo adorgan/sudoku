@@ -1,6 +1,6 @@
-from sudoku.__init__ import app
+from app.__init__ import app
 from flask import render_template, request, json
-from sudoku.helpers import algorithms
+from app.helpers import algorithms
 
 
 @app.route('/')

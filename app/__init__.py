@@ -1,5 +1,5 @@
 from flask import Flask
-import sudoku.routes
+import app.routes
 
 
 app = Flask(__name__)

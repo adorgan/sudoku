@@ -1,4 +1,7 @@
+# VERIFICATION #
+
 def checkRows(board):
+    # check all board rows for duplicate numbers
     for i in range(0, 9):
         checkRow = [0] * 9
         for j in range(0, 9):
@@ -9,6 +12,7 @@ def checkRows(board):
 
 
 def checkColums(board):
+    # check all columns for duplicate numbers
     for i in range(0, 9):
         checkCol = [0] * 9
         for j in range(0, 9):
@@ -19,6 +23,7 @@ def checkColums(board):
 
 
 def checkValidInput(board):
+    # check for valid inputs
     for row in board:
         if len(row) != 9:
             return False
@@ -29,7 +34,7 @@ def checkValidInput(board):
 
 
 def checkSubGrid(board):
-
+    # check each subgrid for duplicate numbers
     rowIndex = 0
     while rowIndex < 9:
         colIndex = 0
@@ -46,15 +51,29 @@ def checkSubGrid(board):
 
 
 def validateSolution(board):
+    # check if user answerse are correct
     if checkValidInput(board) and checkRows(board) \
             and checkColums(board) and checkSubGrid(board):
-
         return True
     else:
         return False
 
+# --------------------------------------------------------------#
+# SOLVING #
+# modeled after: https://www.youtube.com/watch?v=lK4N8E6uNr4
+
+
+def findEmptySquare(board):
+    # find square to fill in
+    for i in range(len(board)):
+        for j in range(len(board[0])):
+            if board[i][j] == 0:
+                return [i, j]
+    return None
+
 
 def checkSingleRow(board, row, num):
+    # check current row for duplicate numbers
     checkList = [0] * 9
     for i in range(9):
         if board[row][i] != 0:
@@ -66,6 +85,7 @@ def checkSingleRow(board, row, num):
 
 
 def checkSingleCol(board, col, num):
+    # check current column for duplicate numbers
     checkList = [0] * 9
     for i in range(9):
         if board[i][col] != 0:
@@ -77,6 +97,7 @@ def checkSingleCol(board, col, num):
 
 
 def checkSingleSubGrid(board, row, col, num):
+    # check current subgrid for duplicate numbers
     checkList = [0] * 9
     subGridX = row - (row % 3)
     subGridY = col - (col % 3)
@@ -89,34 +110,8 @@ def checkSingleSubGrid(board, row, col, num):
     return True
 
 
-def getSolvedBoard(board):
-    temp = board
-    solveBoard(temp)
-
-    return temp
-
-
-def solveBoard(board):
-    emptySquare = findEmptySquare(board)
-    if emptySquare is None:
-        return True
-
-    row = emptySquare[0]
-    col = emptySquare[1]
-
-    for i in range(1, 10):
-        if valid(board, i, row, col):
-            board[row][col] = i
-
-            if solveBoard(board):
-                return True
-
-            board[row][col] = 0
-
-    return False
-
-
 def valid(board, num, row, col):
+    # all checks pass for current square/number
     if checkSingleRow(board, row, num) \
         and checkSingleCol(board, col, num) \
             and checkSingleSubGrid(board, row, col, num):
@@ -125,35 +120,27 @@ def valid(board, num, row, col):
     return False
 
 
-def print_board(bo):
-    for i in range(len(bo)):
-        if i % 3 == 0 and i != 0:
-            print("- - - - - - - - - - - - - ")
+def solveBoard(board):
+    # first find an empty square
+    emptySquare = findEmptySquare(board)
+    if emptySquare is None:
+        # no empty squares means board is complete
+        return True
 
-        for j in range(len(bo[0])):
-            if j % 3 == 0 and j != 0:
-                print(" | ", end="")
+    # assign row,col of empty square
+    row = emptySquare[0]
+    col = emptySquare[1]
 
-            if j == 8:
-                print(bo[i][j])
-            else:
-                print(str(bo[i][j]) + " ", end="")
+    for i in range(1, 10):
+        # try each possible number choice for an empty square
+        if valid(board, i, row, col):
+            # if the number is not a duplicate, assign to that square
+            board[row][col] = i
 
+            if solveBoard(board):
+                # recursively solve the rest of the board
+                return True
 
-def findEmptySquare(board):
-    for i in range(len(board)):
-        for j in range(len(board[0])):
-            if board[i][j] == 0:
-                return [i, j]
-    return None
-
-
-# board = [[0, 7, 0, 9, 0, 2, 3, 0, 8], [0, 0, 0, 0, 6, 0, 0, 0, 0],
-#          [0, 0, 0, 0, 5, 7, 1, 0, 6], [0, 0, 0, 0, 0, 0, 0, 0, 7],
-#          [7, 6, 8, 4, 0, 0, 0, 0, 2], [0, 0, 0, 0, 0, 9, 0, 3, 0],
-#          [1, 0, 0, 0, 7, 3, 2, 0, 0], [0, 8, 0, 0, 0, 1, 0, 4, 0],
-#          [0, 0, 0, 0, 0, 0, 0, 6, 0]]
-# print_board(board)
-# solve(board)
-# print("___________________")
-# print_board(board)
+            board[row][col] = 0
+    # no number works, so must backtrack
+    return False

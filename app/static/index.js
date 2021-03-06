@@ -1,17 +1,16 @@
-var cells = document.getElementsByTagName('td')
-var grid = []
-var row = []
+var cells = document.getElementsByTagName("td");
+var grid = [];
+var row = [];
 
 // create empty matrix
-for(i = 0; i < 81; i++){
-    if(i%9==0 && i!=0){
-        grid.push(row)
-        row = []
-        row.push(cells[i])
-    }
-    else{
-        row.push(cells[i])
-    }
+for (i = 0; i < 81; i++) {
+  if (i % 9 == 0 && i != 0) {
+    grid.push(row);
+    row = [];
+    row.push(cells[i]);
+  } else {
+    row.push(cells[i]);
+  }
 }
 grid.push(row);
 
@@ -26,28 +25,31 @@ var medBoard = [
   [6, 9, 0, 7, 0, 3, 8, 1, 0],
   [1, 7, 0, 5, 0, 0, 0, 0, 4],
 ];
-//set initial board 
+//set initial board
 setPuzzle(medBoard);
 
 //set inputs for all empty squares
-for(i = 0; i < 9; i++){
-    for(j = 0; j < 9; j++){
-        if(grid[i][j].innerText == ""){
-            var input = document.createElement("input");
-            input.type = "text";
-            input.name = `${i}${j}`;
-            grid[i][j].appendChild(input); 
-        }
-        else{
-            var input = document.createElement("input");
-            input.type = "text";
-            input.name = `${i}${j}`;
-            input.hidden = true;
-            input.value = parseInt(grid[i][j].innerText)
-            grid[i][j].appendChild(input); 
-        }
+function addInputs(grid) {
+  for (i = 0; i < 9; i++) {
+    for (j = 0; j < 9; j++) {
+      if (grid[i][j].innerText == "") {
+        var input = document.createElement("input");
+        input.type = "text";
+        input.name = `${i}${j}`;
+        grid[i][j].appendChild(input);
+      } else {
+        var input = document.createElement("input");
+        input.type = "text";
+        input.name = `${i}${j}`;
+        input.hidden = true;
+        input.value = parseInt(grid[i][j].innerText);
+        grid[i][j].appendChild(input);
+      }
     }
+  }
 }
+
+
 
 //verify if user answers are correct
 $("#form").submit(function (e) {
@@ -67,16 +69,16 @@ $("#form").submit(function (e) {
 });
 
 //solve puzzle
-$("#solve").click(function(e) {
+$("#solve").click(function (e) {
   e.preventDefault();
   var board = gridToList(medBoard);
 
   $.ajax({
     type: "POST",
-    url: '/solve',
+    url: "/solve",
     data: JSON.stringify(board),
     success: function (data) {
-      arr = JSON.parse(data)
+      arr = JSON.parse(data);
       setPuzzle(arr);
     },
   });
@@ -89,26 +91,26 @@ $("#clear").click(function (e) {
 });
 
 //set board based on grid matrix
-function setPuzzle(board){
-    for (i = 0; i < 9; i++) {
-      for (j = 0; j < 9; j++) {
-        if (board[i][j] == 0){
-            grid[i][j].innerText = '';
-        } 
-        else{
-            grid[i][j].innerText = board[i][j];
-        } 
+function setPuzzle(board) {
+  for (i = 0; i < 9; i++) {
+    for (j = 0; j < 9; j++) {
+      if (board[i][j] == 0) {
+        grid[i][j].innerText = "";
+      } else {
+        grid[i][j].innerText = board[i][j];
       }
     }
+  }
+  addInputs(grid);
 }
 
 //convert matrix to list for parsing on backend
-function gridToList(board){
-    newList = [];
-    for(i=0; i<9; i++){
-        for(j=0; j<9; j++){
-            newList.push(board[i][j]);
-        }
+function gridToList(board) {
+  newList = [];
+  for (i = 0; i < 9; i++) {
+    for (j = 0; j < 9; j++) {
+      newList.push(board[i][j]);
     }
-    return newList;
+  }
+  return newList;
 }

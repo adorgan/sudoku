@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, json
-from helpers import algorithms
-# from algorithms import validateSolution, getSolvedBoard
+from app.helpers import algorithms
 app = Flask(__name__)
 
 

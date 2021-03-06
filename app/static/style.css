@@ -1,14 +1,32 @@
+body {
+    margin-right: 10%;
+    margin-left: 10%;
+    background-color: rgb(197, 197, 255);
+}
+
+h4 {
+    margin-top: 0;
+}
 table { 
     border-collapse: collapse; 
     font-family: Calibri, sans-serif; 
+
 }
+form {
+    float: left;
+}
+
 colgroup, tbody { 
     border: solid medium; 
 }
+
+tbody {
+    background-color: white;
+}
 td { 
     border: solid thin; 
-    height: 2em; 
-    width: 2em; 
+    height: 2.5em; 
+    width: 2.5em; 
     text-align: center; 
     padding: 0; }
 
@@ -17,5 +35,17 @@ input {
     border: 0; 
     font-size: 14px;
     color:blue;
+    align-content: center;
+}
+
+#rules {
+    float: right;
+    margin-top: 0em;
+
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-content: center;
 }

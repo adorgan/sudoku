@@ -15,34 +15,45 @@
 
 <body>
 
-<style>
 
-</style>
-<form id='form' action="/verify" method="POST">
+<div id='container'>
 
 
-<table>
-  <caption>Sudoku</caption>
-  <colgroup><col><col><col></colgroup>
-  <colgroup><col><col><col></colgroup>
-  <colgroup><col><col><col></colgroup>
-  <tbody>
-   <tr> <td> <td>7 <td> <td>9 <td>  <td>2 <td>3 <td>  <td>8
-   <tr> <td>  <td> <td>  <td>  <td>6 <td>  <td>  <td> <td>
-   <tr> <td> <td>  <td>  <td>  <td>5  <td> 7 <td> 1 <td>  <td>6
-  <tbody>
-   <tr> <td> <td>  <td> <td>  <td> <td>  <td> <td>  <td>7
-   <tr> <td> 7 <td> 6 <td> 8 <td>4  <td>  <td>  <td>  <td>  <td>2
-   <tr> <td> <td>  <td>  <td> <td>  <td>9 <td>  <td> 3 <td>
-  <tbody>
-   <tr> <td>1 <td>  <td>  <td>  <td>7 <td>3  <td>2  <td>  <td>
-   <tr> <td>  <td> 8 <td>  <td>  <td> <td> 1 <td>  <td>  4<td>
-   <tr> <td></td> <td>  <td>  <td> <td>  <td> <td>  <td>6  <td>
-</table>
-<button id='verify' type="submit">Verify</button>
-</form>
+  <form id='form' action="/verify" method="POST" >
 
-<button id='solve'>Solve</button>
+    <table>
+      <caption><h4>Sudoku</h4></caption>
+      <colgroup><col><col><col></colgroup>
+      <colgroup><col><col><col></colgroup>
+      <colgroup><col><col><col></colgroup>
+      <tbody>
+      <tr> <td> <td>7 <td> <td>9 <td>  <td>2 <td>3 <td>  <td>8
+      <tr> <td>  <td> <td>  <td>  <td>6 <td>  <td>  <td> <td>
+      <tr> <td> <td>  <td>  <td>  <td>5  <td> 7 <td> 1 <td>  <td>6
+      <tbody>
+      <tr> <td> <td>  <td> <td>  <td> <td>  <td> <td>  <td>7
+      <tr> <td> 7 <td> 6 <td> 8 <td>4  <td>  <td>  <td>  <td>  <td>2
+      <tr> <td> <td>  <td>  <td> <td>  <td>9 <td>  <td> 3 <td>
+      <tbody>
+      <tr> <td>1 <td>  <td>  <td>  <td>7 <td>3  <td>2  <td>  <td>
+      <tr> <td>  <td> 8 <td>  <td>  <td> <td> 1 <td>  <td>  4<td>
+      <tr> <td></td> <td>  <td>  <td> <td>  <td> <td>  <td>6  <td>
+    </table>
+  <button id='verify' type="submit">Verify</button>
+  </form>
+  <div id='rules'>
+  <h4>Rules</h4>
+  <ul>
+    <li>You must enter a number 1-9 for each box</li>
+  </ul>
+  <button id='solve'>Solve</button>
+
+</div>
+</div>
+
+
+
+
 
 <script
   src="https://code.jquery.com/jquery-3.6.0.js"

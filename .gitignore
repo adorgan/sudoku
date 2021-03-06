@@ -2,8 +2,7 @@ venv/
 .vscode/
 app/__pycache__/
 helpers/__pycache__/
-app/__pycache__/__init__.cpython-37.pyc
-app/__pycache__/algorithms.cpython-37.pyc
+app/__pycache__/
 app/helpers/__pycache__/algorithms.cpython-37.pyc
 __pycache__/
-app/__pycache__/__init__.cpython-37.pyc
+

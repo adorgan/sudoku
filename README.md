@@ -2,7 +2,7 @@
 Question 3
   - Implementation of Sudoku via Flask located at: https://github.com/adorgan/sudoku
   - Visit hosted site to play: http://sudoku-dorgana.herokuapp.com/
-  (this will take a few seconds to initially load)
+  (this will take a few seconds to initially load, tested with Chrome browser)
 
 Problem 4
   - Verification algorithm located in app/helpers/algorithm.py, or here: https://github.com/adorgan/sudoku/blob/main/app/helpers/algorithms.py
@@ -14,4 +14,4 @@ Extra Credit A
 
 Extra Credit C
   - Visit hosted site with GUI to play: http://sudoku-dorgana.herokuapp.com/
-  (this will take a few seconds to initially load)
+  (this will take a few seconds to initially load, tested with Chrome browser)

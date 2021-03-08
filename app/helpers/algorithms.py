@@ -111,7 +111,7 @@ def checkSingleSubGrid(board, row, col, num):
 
 
 def valid(board, num, row, col):
-    # all checks pass for current square/number
+    # see if all checks pass for current square/number
     if checkSingleRow(board, row, num) \
         and checkSingleCol(board, col, num) \
             and checkSingleSubGrid(board, row, col, num):

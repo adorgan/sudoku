@@ -5,11 +5,11 @@ Question 3
   (this will take a few seconds to initially load, tested with Chrome browser)
 
 Problem 4
-  - Verification algorithm located in algorithm.py on TEACH, or here: https://github.com/adorgan/sudoku/blob/main/app/helpers/algorithms.py
+  - Verification algorithm located in algorithms.py on TEACH, or here: https://github.com/adorgan/sudoku/blob/main/app/helpers/algorithms.py
   (Verification algorithm located in lines 1-60)
 
 Extra Credit A
-  - Solving algorithm located in algorithm.py on TEACH, or here: https://github.com/adorgan/sudoku/blob/main/app/helpers/algorithms.py
+  - Solving algorithm located in algorithms.py on TEACH, or here: https://github.com/adorgan/sudoku/blob/main/app/helpers/algorithms.py
   (Solving algorithm located in lines 61-146)
 
 Extra Credit C
